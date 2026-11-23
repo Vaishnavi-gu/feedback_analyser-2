@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>InsightAI | Feedback Intelligence</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+<div class="app-shell">
+  <aside class="sidebar">
+    <a class="brand" href="/"><span class="brand-mark">✳</span><span>Insight<span class="brand-ai">AI</span><small>FEEDBACK INTELLIGENCE</small></span></a>
+    <div class="nav-label">WORKSPACE</div>
+    <nav>
+      <a href="/" class="{% if request.path == '/' %}active{% endif %}"><span>▦</span> Dashboard</a>
+      <a href="/analyse" class="{% if request.path == '/analyse' %}active{% endif %}"><span>✧</span> Analyse feedback</a>
+      <a href="/history" class="{% if request.path == '/history' %}active{% endif %}"><span>◷</span> Feedback history</a>
+    </nav>
+    <div class="sidebar-bottom"><div class="status-dot"></div><div><b>AI engine</b><small>DistilBERT · Local inference</small></div></div>
+  </aside>
+  <main class="main-area">
+    <header class="topbar"><div><span class="eyebrow">FEEDBACK INTELLIGENCE PLATFORM</span><h1>{% block page_title %}Overview{% endblock %}</h1></div><a class="top-action" href="/analyse">＋ New analysis</a></header>
+    <section class="page-content">{% block content %}{% endblock %}</section>
+  </main>
+</div>
+<script src="{{ url_for('static', filename='js/app.js') }}"></script>
+{% block scripts %}{% endblock %}
+</body></html>

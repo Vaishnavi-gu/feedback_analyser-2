@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% block page_title %}Feedback history{% endblock %}
+{% block content %}
+<div class="welcome-row"><div><h2>All submissions</h2><p>Review, filter and manage feedback analysed by the AI engine.</p></div><a class="top-action" href="/analyse">＋ Add feedback</a></div>
+<div class="panel history-panel"><div class="history-toolbar"><div><h3>Submission log</h3><p id="historyCount">Loading feedback…</p></div><select id="sentimentFilter" onchange="loadHistory()"><option value="all">All sentiments</option><option value="positive">Positive</option><option value="negative">Negative</option><option value="neutral">Neutral</option><option value="mixed">Mixed</option></select></div><div id="historyList" class="history-list"><div class="empty-hint">Loading…</div></div></div>
+{% endblock %}
+{% block scripts %}<script src="{{ url_for('static', filename='js/history.js') }}"></script>{% endblock %}

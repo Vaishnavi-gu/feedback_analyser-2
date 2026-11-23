@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block page_title %}Dashboard{% endblock %}
+{% block content %}
+<div class="welcome-row"><div><h2>Feedback overview</h2><p>Understand what users are saying and turn insights into action.</p></div><span class="live-pill"><i></i> LIVE DATA</span></div>
+<div class="stats-grid">
+  <div class="stat-card"><span class="stat-icon blue">▤</span><span class="stat-label">Total feedback</span><strong id="total">0</strong><small>All submissions</small></div>
+  <div class="stat-card"><span class="stat-icon green">↗</span><span class="stat-label">Positive</span><strong id="positive">0%</strong><small id="positive-count">0 responses</small></div>
+  <div class="stat-card"><span class="stat-icon red">↘</span><span class="stat-label">Negative</span><strong id="negative">0%</strong><small id="negative-count">0 responses</small></div>
+  <div class="stat-card"><span class="stat-icon purple">◎</span><span class="stat-label">Satisfaction</span><strong id="satisfaction">0%</strong><small>Positive share of all feedback</small></div>
+</div>
+<div class="dashboard-grid">
+  <div class="panel chart-panel"><div class="panel-heading"><div><h3>Sentiment distribution</h3><p>How users feel about the product</p></div><span class="muted-tag">ALL TIME</span></div><div class="chart-wrap doughnut-wrap"><canvas id="sentimentChart"></canvas><div class="chart-center"><strong id="total-center">0</strong><span>responses</span></div></div></div>
+  <div class="panel chart-panel"><div class="panel-heading"><div><h3>Top reported issues</h3><p>Recurring areas that need attention</p></div></div><div class="chart-wrap"><canvas id="issuesChart"></canvas></div><div id="issues-empty" class="empty-hint">No recurring issues detected yet.</div></div>
+  <div class="panel chart-panel wide"><div class="panel-heading"><div><h3>Feedback activity</h3><p>Submission volume over recent days</p></div></div><div class="chart-wrap line-wrap"><canvas id="trendChart"></canvas></div></div>
+  <div class="panel chart-panel"><div class="panel-heading"><div><h3>Aspect sentiment</h3><p>Positive and negative mentions by topic</p></div></div><div class="chart-wrap"><canvas id="aspectChart"></canvas></div></div>
+  <div class="panel"><div class="panel-heading"><div><h3>Improvement priorities</h3><p>AI-generated recommendations</p></div><span class="ai-tag">✧ AI INSIGHTS</span></div><div id="recommendations" class="recommendation-list"><div class="empty-hint">Submit feedback to generate recommendations.</div></div></div>
+  <div class="panel wide"><div class="panel-heading"><div><h3>Recent feedback</h3><p>Latest user submissions and their sentiment</p></div><a href="/history" class="text-link">View all →</a></div><div id="recent-list" class="recent-list"><div class="empty-hint">No feedback submitted yet. Start by analysing your first response.</div></div></div>
+</div>
+{% endblock %}
+{% block scripts %}<script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>{% endblock %}

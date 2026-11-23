@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block page_title %}Analyse feedback{% endblock %}
+{% block content %}
+<div class="welcome-row"><div><h2>Understand every response</h2><p>Submit a comment and let the NLP engine uncover the signal behind it.</p></div><span class="ai-tag large">✧ POWERED BY DISTILBERT</span></div>
+<div class="analyse-layout">
+  <div class="panel input-panel"><div class="panel-heading"><div><h3>New feedback</h3><p>Paste or type a user's feedback below.</p></div><span class="step-number">01</span></div>
+    <label for="feedbackInput">FEEDBACK TEXT</label>
+    <textarea id="feedbackInput" maxlength="3000" placeholder="Example: The device is easy to operate, but the sensor readings are inconsistent..."></textarea>
+    <div class="input-meta"><span>Be as specific as possible for richer insights.</span><span id="charCount">0 / 3000</span></div>
+    <button id="analyseBtn" class="primary-btn" onclick="submitFeedback()">✧ Analyse with AI <span>→</span></button>
+    <p class="privacy-note">Your feedback is processed by the local Python backend and saved to your SQLite database.</p>
+    <div id="errorMessage" class="error-message"></div>
+  </div>
+  <div id="resultPanel" class="panel result-panel hidden"><div class="panel-heading"><div><h3>Analysis result</h3><p>AI interpretation of the submitted feedback</p></div><span class="success-tag">✓ ANALYSED</span></div>
+    <div class="result-sentiment"><div><span class="mini-label">OVERALL SENTIMENT</span><h2 id="resultSentiment">—</h2></div><div class="confidence"><strong id="resultConfidence">—</strong><small>Model confidence</small></div></div>
+    <div class="result-section"><h4>Detected aspects</h4><div id="aspectResults" class="chip-list"></div></div>
+    <div class="result-section"><h4>Identified issues</h4><div id="issueResults" class="chip-list"></div></div>
+    <div class="result-section"><h4>Important keywords</h4><div id="keywordResults" class="chip-list"></div></div>
+    <div class="result-section"><h4>AI improvement recommendations</h4><ul id="recommendationResults" class="recommendation-list"></ul></div>
+  </div>
+</div>
+{% endblock %}
+{% block scripts %}<script src="{{ url_for('static', filename='js/analyse.js') }}"></script>{% endblock %}
